@@ -9,6 +9,7 @@ clear all; close all; clc;
 ElasticModWall = 69e9; % GPa to Pa
 PoissonRatioWall = 0.33;
 wallThickness = 0.1e-3; % mm to m
+canDiamWill = 65.95e-3; % mm to m
 
 %% Bad Run Data - commented out since not needed
 % raw = readmatrix("bad_run2.TXT");
@@ -142,6 +143,17 @@ disp("H stress = " + stressHoopAfter*1e-6 + " MPa")
 % stress ratio
 stressRatio = mean(stressHoop(9:end)./stressLong(9:end));
 disp("Run 4 - Stress Ratio (H/L) = " + stressRatio)
+
+% Internal Pressure
+BeforePressure_H = (4*wallThickness*ElasticModWall*strainHoopBefore)/(canDiamWill*(2-PoissonRatioWall));
+BeforePressure_L = (4*wallThickness*ElasticModWall*strainLongBefore)/(canDiamWill*(1-2*PoissonRatioWall));
+disp("H Pressure Before = " + BeforePressure_H*1e-3 + " kPa")
+disp("L Pressure Before = " + BeforePressure_L*1e-3 + " kPa")
+Pressure_H = (4*wallThickness*ElasticModWall*strainHoopAfter)/(canDiamWill*(2-PoissonRatioWall));
+Pressure_L = (4*wallThickness*ElasticModWall*strainLongAfter)/(canDiamWill*(1-2*PoissonRatioWall));
+disp("H Pressure After = " + Pressure_H*1e-3 + " kPa")
+disp("L Pressure After = " + Pressure_L*1e-3 + " kPa")
+
 disp("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 %% plot run 1 - Will
 
@@ -248,6 +260,15 @@ grid on
 stressRatio = mean(stressHoop(12:end)./stressLong(12:end));
 disp("Run 1 - Stress Ratio (H/L) = " + stressRatio)
 
+% Internal Pressure
+BeforePressure_H = (4*wallThickness*ElasticModWall*strainHoopBefore)/(canDiamWill*(2-PoissonRatioWall));
+BeforePressure_L = (4*wallThickness*ElasticModWall*strainLongBefore)/(canDiamWill*(1-2*PoissonRatioWall));
+disp("H Pressure Before = " + BeforePressure_H*1e-3 + " kPa")
+disp("L Pressure Before = " + BeforePressure_L*1e-3 + " kPa")
+Pressure_H = (4*wallThickness*ElasticModWall*strainHoopAfter)/(canDiamWill*(2-PoissonRatioWall));
+Pressure_L = (4*wallThickness*ElasticModWall*strainLongAfter)/(canDiamWill*(1-2*PoissonRatioWall));
+disp("H Pressure After = " + Pressure_H*1e-3 + " kPa")
+disp("L Pressure After = " + Pressure_L*1e-3 + " kPa")
 %% plot Justin run 3
 
 raw = readmatrix("justin_run3.TXT");
@@ -356,3 +377,13 @@ stressRatio = mean(stressHoop(10:end)./stressLong(10:end));
 disp("Run 3 - Stress Ratio (H/L) = " + stressRatio)
 
 %mean([66.09, 65.92,65.90,65.92,65.94])
+
+% Internal Pressure
+BeforePressure_H = (4*wallThickness*ElasticModWall*strainHoopBefore)/(canDiamWill*(2-PoissonRatioWall));
+BeforePressure_L = (4*wallThickness*ElasticModWall*strainLongBefore)/(canDiamWill*(1-2*PoissonRatioWall));
+disp("H Pressure Before = " + BeforePressure_H*1e-3 + " kPa")
+disp("L Pressure Before = " + BeforePressure_L*1e-3 + " kPa")
+Pressure_H = (4*wallThickness*ElasticModWall*strainHoopAfter)/(canDiamWill*(2-PoissonRatioWall));
+Pressure_L = (4*wallThickness*ElasticModWall*strainLongAfter)/(canDiamWill*(1-2*PoissonRatioWall));
+disp("H Pressure After = " + Pressure_H*1e-3 + " kPa")
+disp("L Pressure After = " + Pressure_L*1e-3 + " kPa")
