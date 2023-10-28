@@ -71,6 +71,15 @@ tb = find(~isnan(B));
 A = A(~isnan(A));
 B = B(~isnan(B));
 
+% Temperature correction factor
+T = 72; % deg F (Wunderground; after interpolation)
+Tref = 73; % deg F (MicroMeasurements Wheatstone Bridge)
+cf = T/Tref;
+
+% Correction
+A = A*cf;
+B = B*cf;
+
 figure()
 % Hoop
 p1 = plot(ta,A,'-square','LineWidth',1);
@@ -114,6 +123,10 @@ tb = find(~isnan(B));
 % Extract non NaN values from raw data
 A = A(~isnan(A));
 B = B(~isnan(B));
+
+% Temperature correction factor
+A = A*cf;
+B = B*cf;
 
 figure()
 % Hoop
@@ -304,3 +317,5 @@ grid on
 % stress ratio
 stressRatio = mean(stressHoop(10:end)./stressLong(10:end));
 disp("Run 3 - Stress Ratio (H/L) = " + stressRatio)
+
+mean([66.09, 65.92,65.90,65.92,65.94])
