@@ -110,6 +110,39 @@ plot(ta,B_adjusted,'-o','LineWidth',1,'Color','r')
 
 legend('Hoop','Longitudinal (raw)',"Longitudinal (adjusted)",'interpreter','latex','Location', 'best')
 
+%% savannah analysis
+
+strainLong = B_adjusted*1e-6;
+strainHoop = A*1e-6;
+stressLong = (ElasticModWall*(strainLong+PoissonRatioWall*strainHoop))/(1-PoissonRatioWall^2);
+stressHoop = (ElasticModWall*(strainHoop+PoissonRatioWall*strainLong))/(1-PoissonRatioWall^2);
+
+strainLongBefore = mean(strainLong(1:5));
+strainLongAfter = mean(strainLong(9:end));
+strainHoopBefore = mean(strainHoop(1:5));
+strainHoopAfter = mean(strainHoop(9:end));
+
+stressLongBefore = mean(stressLong(1:5));
+stressLongAfter = mean(stressLong(9:end));
+stressHoopBefore = mean(stressHoop(1:5));
+stressHoopAfter = mean(stressHoop(9:end));
+
+disp("Savannah - Run 4")
+disp("Before:")
+disp("L micro-strain = " + strainLongBefore*1e6)
+disp("H micro-strain = " + strainHoopBefore*1e6)
+disp("L stress = " + stressLongBefore*1e-6 + " MPa")
+disp("H stress = " + stressHoopBefore*1e-6 + " MPa")
+disp("After:")
+disp("L micro-strain = " + strainLongAfter*1e6)
+disp("H micro-strain = " + strainHoopAfter*1e6)
+disp("L stress = " + stressLongAfter*1e-6 + " MPa")
+disp("H stress = " + stressHoopAfter*1e-6 + " MPa")
+
+% stress ratio
+stressRatio = mean(stressHoop(9:end)./stressLong(9:end));
+disp("Run 4 - Stress Ratio (H/L) = " + stressRatio)
+disp("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 %% plot run 1 - Will
 
 raw = readmatrix("will_run1.TXT");
@@ -169,17 +202,17 @@ stressLongAfter = mean(stressLong(7:end));
 stressHoopBefore = mean(stressHoop(1:4));
 stressHoopAfter = mean(stressHoop(7:end));
 
-disp("Run 1")
+disp("Will - Run 1")
 disp("Before:")
-disp("L strain = " + strainLongBefore)
-disp("H strain = " + strainHoopBefore)
-disp("L stress = " + stressLongBefore + " Pa")
-disp("H stress = " + stressHoopBefore + " Pa")
+disp("L micro-strain = " + strainLongBefore*1e6)
+disp("H micro-strain = " + strainHoopBefore*1e6)
+disp("L stress = " + stressLongBefore*1e-6 + " MPa")
+disp("H stress = " + stressHoopBefore*1e-6 + " MPa")
 disp("After:")
-disp("L strain = " + strainLongAfter)
-disp("H strain = " + strainHoopAfter)
-disp("L stress = " + stressLongAfter + " Pa")
-disp("H stress = " + stressHoopAfter + " Pa")
+disp("L micro-strain = " + strainLongAfter*1e6)
+disp("H micro-strain = " + strainHoopAfter*1e6)
+disp("L stress = " + stressLongAfter*1e-6 + " MPa")
+disp("H stress = " + stressHoopAfter*1e-6 + " MPa")
 
 figure("Name"," Longitudinal Stress-Strain Curve")
 plot(strainLong,stressLong,'-o')
@@ -272,17 +305,17 @@ stressHoopBefore = mean(stressHoop(1:9));
 stressHoopAfter = mean(stressHoop(10:end));
 
 disp("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-disp("Run 3")
+disp("Justin - Run 3")
 disp("Before:")
-disp("L strain = " + strainLongBefore)
-disp("H strain = " + strainHoopBefore)
-disp("L stress = " + stressLongBefore + " Pa")
-disp("H stress = " + stressHoopBefore + " Pa")
+disp("L micro-strain = " + strainLongBefore*1e6)
+disp("H micro-strain = " + strainHoopBefore*1e6)
+disp("L stress = " + stressLongBefore*1e-6 + " MPa")
+disp("H stress = " + stressHoopBefore*1e-6 + " MPa")
 disp("After:")
-disp("L strain = " + strainLongAfter)
-disp("H strain = " + strainHoopAfter)
-disp("L stress = " + stressLongAfter + " Pa")
-disp("H stress = " + stressHoopAfter + " Pa")
+disp("L micro-strain = " + strainLongAfter*1e6)
+disp("H micro-strain = " + strainHoopAfter*1e6)
+disp("L stress = " + stressLongAfter*1e-6 + " MPa")
+disp("H stress = " + stressHoopAfter*1e-6 + " MPa")
 
 figure("Name"," Longitudinal Stress-Strain Curve")
 plot(strainLong,stressLong,'-o')
