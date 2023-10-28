@@ -99,7 +99,7 @@ fudgeFactor = mean(B(1:5));
 B_adjusted = B - fudgeFactor;
 plot(ta,B_adjusted,'-o','LineWidth',1,'Color','r')
 
-legend('Hoop','Longitudinal (raw)',"Longitudinal",'interpreter','latex','Location', 'best')
+legend('Hoop','Longitudinal (raw)',"Longitudinal (adjusted)",'interpreter','latex','Location', 'best')
 
 %% plot run 1 - Will
 
@@ -139,6 +139,7 @@ set([xLab, yLab],'FontSize', 14)
 grid on 
 legend('Hoop','Longitudinal','interpreter','latex','Location', 'best')
 
+%% Analysis from Will's Run
 % stress - strain curve
 strainLong = B*1e-6;
 strainHoop = A*1e-6;
@@ -169,15 +170,33 @@ disp("H stress = " + stressHoopAfter + " Pa")
 
 figure("Name"," Longitudinal Stress-Strain Curve")
 plot(strainLong,stressLong,'-o')
-title("Longitudinal Stress-Strain Curve")
-xlabel("\epsilon_L")
-ylabel("\sigma_L [Pa]")
+% Graph pretty 
+ylim padded 
+xlim tight 
+xLab = xlabel('$\epsilon_L$','Interpreter','latex'); 
+yLab = ylabel('$\sigma_L$ [Pa]','Interpreter','latex'); 
+plotTitle = title('Will Run: Longitudinal Stress-Strain Curve','interpreter','latex'); 
+set(plotTitle,'FontSize',14,'FontWeight','bold') 
+set(gca,'FontName','Palatino Linotype') 
+set([xLab, yLab],'FontName','Palatino Linotype') 
+set(gca,'FontSize', 9) 
+set([xLab, yLab],'FontSize', 14) 
+grid on 
 
 figure('Name',"Hoop Stress-Strain Curve")
 plot(strainHoop,stressHoop,'-o')
-title("Hoop Stress Strain Curve")
-xlabel("\epsilon_H")
-ylabel("\sigma_H [Pa]")
+% Graph pretty 
+ylim padded 
+xlim tight 
+xLab = xlabel('$\epsilon_H$','Interpreter','latex'); 
+yLab = ylabel('$\sigma_H$ [Pa]','Interpreter','latex'); 
+plotTitle = title('Will Run: Hoop Stress-Strain Curve','interpreter','latex'); 
+set(plotTitle,'FontSize',14,'FontWeight','bold') 
+set(gca,'FontName','Palatino Linotype') 
+set([xLab, yLab],'FontName','Palatino Linotype') 
+set(gca,'FontSize', 9) 
+set([xLab, yLab],'FontSize', 14) 
+grid on 
 
 % stress ratio
 stressRatio = mean(stressHoop(12:end)./stressLong(12:end));
@@ -221,6 +240,7 @@ set([xLab, yLab],'FontSize', 14)
 grid on 
 legend('Hoop','Longitudinal','interpreter','latex','Location', 'best')
 
+%% Analysis from Justin's Run
 % stress - strain curve
 strainLong = B(1:length(A))*1e-6;
 strainHoop = A*1e-6;
@@ -253,15 +273,33 @@ disp("H stress = " + stressHoopAfter + " Pa")
 
 figure("Name"," Longitudinal Stress-Strain Curve")
 plot(strainLong,stressLong,'-o')
-title("Longitudinal Stress-Strain Curve")
-xlabel("\epsilon_L")
-ylabel("\sigma_L [Pa]")
+ylim padded 
+xlim tight 
+xLab = xlabel('$\epsilon_L$','Interpreter','latex'); 
+yLab = ylabel('$\sigma_L$ [Pa]','Interpreter','latex'); 
+plotTitle = title('Justin Run: Longitudinal Stress-Strain Curve','interpreter','latex'); 
+set(plotTitle,'FontSize',14,'FontWeight','bold') 
+set(gca,'FontName','Palatino Linotype') 
+set([xLab, yLab],'FontName','Palatino Linotype') 
+set(gca,'FontSize', 9) 
+set([xLab, yLab],'FontSize', 14) 
+grid on 
 
 figure('Name',"Hoop Stress-Strain Curve")
 plot(strainHoop,stressHoop,'-o')
-title("Hoop Stress Strain Curve")
-xlabel("\epsilon_H")
-ylabel("\sigma_H [Pa]")
+% Graph pretty 
+ylim padded 
+xlim tight 
+xLab = xlabel('$\epsilon_H$','Interpreter','latex'); 
+yLab = ylabel('$\sigma_H$ [Pa]','Interpreter','latex'); 
+plotTitle = title('Justin Run: Hoop Stress-Strain Curve','interpreter','latex'); 
+set(plotTitle,'FontSize',14,'FontWeight','bold') 
+set(gca,'FontName','Palatino Linotype') 
+set([xLab, yLab],'FontName','Palatino Linotype') 
+set(gca,'FontSize', 9) 
+set([xLab, yLab],'FontSize', 14) 
+grid on 
+
 
 % stress ratio
 stressRatio = mean(stressHoop(10:end)./stressLong(10:end));
