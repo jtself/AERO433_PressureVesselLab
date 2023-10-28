@@ -262,6 +262,10 @@ tb = find(~isnan(B));
 A = A(~isnan(A));
 B = B(~isnan(B));
 
+% Temperature correction
+A = A*cf;
+B = B*cf;
+
 figure()
 % Hoop
 p1 = plot(ta,A,'-square','LineWidth',1);
@@ -351,4 +355,4 @@ grid on
 stressRatio = mean(stressHoop(10:end)./stressLong(10:end));
 disp("Run 3 - Stress Ratio (H/L) = " + stressRatio)
 
-mean([66.09, 65.92,65.90,65.92,65.94])
+%mean([66.09, 65.92,65.90,65.92,65.94])
