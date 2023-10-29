@@ -10,7 +10,7 @@ ElasticModWall = 69e9; % GPa to Pa
 PoissonRatioWall = 0.33;
 wallThickness = 0.1e-3; % mm to m
 canDiamWill = 65.95e-3; % mm to m
-
+ambientPressure = 101.1e3; % kPa to Pa
 %% Bad Run Data - commented out since not needed
 % raw = readmatrix("bad_run2.TXT");
 % A = raw(:,2);
@@ -153,6 +153,16 @@ Pressure_H = (4*wallThickness*ElasticModWall*strainHoopAfter)/(canDiamWill*(2-Po
 Pressure_L = (4*wallThickness*ElasticModWall*strainLongAfter)/(canDiamWill*(1-2*PoissonRatioWall));
 disp("H Pressure After = " + Pressure_H*1e-3 + " kPa")
 disp("L Pressure After = " + Pressure_L*1e-3 + " kPa")
+
+deltaP_H = abs(BeforePressure_H - Pressure_H);
+deltaP_L = abs(BeforePressure_L - Pressure_L);
+P0_H = (ambientPressure + deltaP_H)*1e-3;
+P0_L = (ambientPressure + deltaP_L)*1e-3;
+
+disp("Delta P (H) = " + deltaP_H*1e-3 + " kPa")
+disp("Delta P (L) = " + deltaP_L*1e-3 + " kPa")
+disp("Internal Pressure (H) = " + P0_H + " kPa")
+disp("Internal Pressure (L) = " + P0_L + " kPa")
 
 disp("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
@@ -300,6 +310,16 @@ Pressure_H = (4*wallThickness*ElasticModWall*strainHoopAfter)/(canDiamWill*(2-Po
 Pressure_L = (4*wallThickness*ElasticModWall*strainLongAfter)/(canDiamWill*(1-2*PoissonRatioWall));
 disp("H Pressure After = " + Pressure_H*1e-3 + " kPa")
 disp("L Pressure After = " + Pressure_L*1e-3 + " kPa")
+
+deltaP_H = abs(BeforePressure_H - Pressure_H);
+deltaP_L = abs(BeforePressure_L - Pressure_L);
+P0_H = (ambientPressure + deltaP_H)*1e-3;
+P0_L = (ambientPressure + deltaP_L)*1e-3;
+
+disp("Delta P (H) = " + deltaP_H*1e-3 + " kPa")
+disp("Delta P (L) = " + deltaP_L*1e-3 + " kPa")
+disp("Internal Pressure (H) = " + P0_H + " kPa")
+disp("Internal Pressure (L) = " + P0_L + " kPa")
 %% plot Justin run 3
 
 raw = readmatrix("justin_run3.TXT");
@@ -418,3 +438,13 @@ Pressure_H = (4*wallThickness*ElasticModWall*strainHoopAfter)/(canDiamWill*(2-Po
 Pressure_L = (4*wallThickness*ElasticModWall*strainLongAfter)/(canDiamWill*(1-2*PoissonRatioWall));
 disp("H Pressure After = " + Pressure_H*1e-3 + " kPa")
 disp("L Pressure After = " + Pressure_L*1e-3 + " kPa")
+
+deltaP_H = abs(BeforePressure_H - Pressure_H);
+deltaP_L = abs(BeforePressure_L - Pressure_L);
+P0_H = (ambientPressure + deltaP_H)*1e-3;
+P0_L = (ambientPressure + deltaP_L)*1e-3;
+
+disp("Delta P (H) = " + deltaP_H*1e-3 + " kPa")
+disp("Delta P (L) = " + deltaP_L*1e-3 + " kPa")
+disp("Internal Pressure (H) = " + P0_H + " kPa")
+disp("Internal Pressure (L) = " + P0_L + " kPa")
