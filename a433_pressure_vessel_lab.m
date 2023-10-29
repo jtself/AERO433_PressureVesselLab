@@ -1,5 +1,5 @@
 %% AERO 433: Experimental Stress Analysis
-% Author: Justin Self
+% Author: Justin Self, Will Crooks
 
 % Housekeeping 
 clear all; close all; clc;
