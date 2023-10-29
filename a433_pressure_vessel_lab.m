@@ -155,6 +155,37 @@ disp("H Pressure After = " + Pressure_H*1e-3 + " kPa")
 disp("L Pressure After = " + Pressure_L*1e-3 + " kPa")
 
 disp("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+
+% stress strain curves
+figure("Name"," Longitudinal Stress-Strain Curve")
+plot(strainLong,stressLong,'-o')
+% Graph pretty 
+ylim padded 
+xlim tight 
+xLab = xlabel('$\epsilon_L$','Interpreter','latex'); 
+yLab = ylabel('$\sigma_L$ [Pa]','Interpreter','latex'); 
+plotTitle = title('Savannah Run: Longitudinal Stress-Strain Curve','interpreter','latex'); 
+set(plotTitle,'FontSize',14,'FontWeight','bold') 
+set(gca,'FontName','Palatino Linotype') 
+set([xLab, yLab],'FontName','Palatino Linotype') 
+set(gca,'FontSize', 9) 
+set([xLab, yLab],'FontSize', 14) 
+grid on 
+
+figure('Name',"Hoop Stress-Strain Curve")
+plot(strainHoop,stressHoop,'-o')
+% Graph pretty 
+ylim padded 
+xlim tight 
+xLab = xlabel('$\epsilon_H$','Interpreter','latex'); 
+yLab = ylabel('$\sigma_H$ [Pa]','Interpreter','latex'); 
+plotTitle = title('Savannah Run: Hoop Stress-Strain Curve','interpreter','latex'); 
+set(plotTitle,'FontSize',14,'FontWeight','bold') 
+set(gca,'FontName','Palatino Linotype') 
+set([xLab, yLab],'FontName','Palatino Linotype') 
+set(gca,'FontSize', 9) 
+set([xLab, yLab],'FontSize', 14) 
+grid on 
 %% plot run 1 - Will
 
 raw = readmatrix("will_run1.TXT");
